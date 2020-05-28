@@ -14,7 +14,7 @@
 !/tmp/.keep
 
 # ignore public files
-# /public/*
+/public/*
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
