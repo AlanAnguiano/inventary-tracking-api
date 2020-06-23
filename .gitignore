@@ -7,6 +7,23 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore node dependencies
+inventory-tracker/node_modules
+
+# profiling files
+inventory-tracker/chrome-profiler-events*.json
+inventory-tracker/speed-measure-plugin*.json
+
+# misc
+inventory-tracker/.sass-cache
+inventory-tracker/connect.lock
+inventory-tracker/coverage
+inventory-tracker/libpeerconnection.log
+inventory-tracker/npm-debug.log
+inventory-tracker/yarn-error.log
+inventory-tracker/testem.log
+inventory-tracker/typings
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*
