@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "inventory-tracker"
+    }
+  },
+  "defaultProject": "inventory-tracker",
+  "cli": {
+    "analytics": "6260e86d-97cd-4f59-860b-ae9464479a37"
+  }
 }
