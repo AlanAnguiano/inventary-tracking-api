@@ -54,10 +54,19 @@ jobs:
           name: Install bundler gem
           command: gem install bundler
 
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+
       - run:
           name: Run bundle install
           command: bundle install
-      
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/inventory-tracker-api/vendor/bundle
       - run:
           name: Run RSpec
           command: bundle exec rspec spec/
