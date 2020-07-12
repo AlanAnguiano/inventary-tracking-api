@@ -7,7 +7,8 @@ jobs:
     working_directory: ~/inventory-tracker-api/inventory-tracker
     steps:
       # Checkout the code from the branch into the working_directory
-      - checkout
+      - checkout:
+          path: ~/inventory-tracker-api
       # Log the current branch
       - run:
           name: Show current branch
@@ -19,7 +20,7 @@ jobs:
             - v1-dependencies-
       # Install project dependencies
       - run:
-          name: Install local dependencies
+          name: Install dependencies
           command: npm install
       # Cache local dependencies if they don't exist
       - save_cache:
