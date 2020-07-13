@@ -1,13 +1,14 @@
 version: 2
 
 jobs:
-  build:
+  test_angular:
     docker:
       - image: circleci/node:12-browsers
-    working_directory: ~/inventory-tracker
+    working_directory: ~/inventory-tracker-api/inventory-tracker
     steps:
       # Checkout the code from the branch into the working_directory
-      - checkout
+      - checkout:
+          path: ~/inventory-tracker-api
       # Log the current branch
       - run:
           name: Show current branch
@@ -19,13 +20,13 @@ jobs:
             - v1-dependencies-
       # Install project dependencies
       - run:
-          name: Install local dependencies
+          name: Install dependencies
           command: npm install
       # Cache local dependencies if they don't exist
       - save_cache:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
           paths:
-            - node_modules
+              - node_modules
       # Lint the source code
       - run:
           name: Linting
@@ -38,3 +39,41 @@ jobs:
       - run:
           name: End to End Test
           command: npm run e2e -- --protractor-config=e2e/protractor-ci.conf.js
+
+  test_rails:
+    docker:
+      - image: circleci/ruby:2.6.5
+      - image: circleci/postgres:9.6.9-alpine
+        environment:
+          POSTGRES_USER: postgres
+
+    working_directory: ~/inventory-tracker-api
+
+    steps:
+      - checkout
+      - run:
+          name: Install bundler gem
+          command: gem install bundler
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}
+            - v1-dependencies-
+
+      - run:
+          name: Run bundle install
+          command: bundle install
+
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+          paths:
+            - ~/inventory-tracker-api/vendor/bundle
+      - run:
+          name: Run RSpec
+          command: bundle exec rspec spec/
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test_angular
+      - test_rails
