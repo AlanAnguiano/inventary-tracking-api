@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
-
   constructor(private tokenService: AngularTokenService) { }
+
+  title = 'Sign in';
 
   ngOnInit(): void { }
 
