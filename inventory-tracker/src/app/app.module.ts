@@ -7,6 +7,7 @@ import { GoogleOauthConfigModule } from './google-oauth-config/google-oauth-conf
 import { HttpClientModule } from '@angular/common/http';
 import { OauthCallbackComponentComponent } from './oauth-callback-component/oauth-callback-component.component';
 import { SigninComponent } from './signin/signin.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -15,10 +16,11 @@ import { SigninComponent } from './signin/signin.component';
     OauthCallbackComponentComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    BrowserModule,
     GoogleOauthConfigModule,
+    HttpClientModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
