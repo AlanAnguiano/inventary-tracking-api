@@ -9,6 +9,8 @@ import {AngularTokenService} from 'angular-token';
 export class OauthCallbackComponentComponent implements OnInit {
   constructor(private tokenService: AngularTokenService) { }
 
+  title = 'Oauth callback';
+
   ngOnInit(): void {
     this.tokenService.processOAuthCallback();
   }
