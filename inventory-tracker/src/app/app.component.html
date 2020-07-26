@@ -1,2 +1,5 @@
-<h1>{{title}}</h1>
-<router-outlet></router-outlet>
+<div class="top-bar">
+  <h1>{{title}}</h1>
+</div>
+
+<router-outlet (activate)="onRouterOutletActivate($event)"></router-outlet>
