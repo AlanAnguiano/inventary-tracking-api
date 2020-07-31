@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'inventory-tracker';
+
+  onRouterOutletActivate(event: any): void {
+    this.title = event.title;
+  }
 }
