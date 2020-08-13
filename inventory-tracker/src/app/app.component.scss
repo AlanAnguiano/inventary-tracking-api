@@ -1,7 +1,41 @@
 @import "../assets/styles/variables";
 
+.user-data-container{ }
+
+.user-image {
+  display: inline-block;
+  height: 150px;
+  width: 150px;
+}
+
+.user-actions-container {
+  display: inline-block;
+  margin-left: 15px;
+}
+
 .top-bar {
   background-color: $pelorous;
   color: white;
   width: 100%;
+}
+
+.page-title {
+  display: inline-block;
+}
+
+.lateral-menu {
+  background-color: $outer-space;
+  list-style-type: none;
+}
+
+.navigation-link {
+  & a {
+    color: white;
+  }
+
+  & i {
+    margin-right: 5px;
+  }
+
+  height: 50px;
 }

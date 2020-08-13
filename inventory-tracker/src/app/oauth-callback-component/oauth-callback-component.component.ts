@@ -1,5 +1,6 @@
+import { AngularTokenService } from 'angular-token';
 import { Component, OnInit } from '@angular/core';
-import {AngularTokenService} from 'angular-token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-oauth-callback-component',
@@ -7,11 +8,12 @@ import {AngularTokenService} from 'angular-token';
   styleUrls: ['./oauth-callback-component.component.scss']
 })
 export class OauthCallbackComponentComponent implements OnInit {
-  constructor(private tokenService: AngularTokenService) { }
+  constructor(private tokenService: AngularTokenService, private router: Router) { }
 
   title = 'Oauth callback';
 
   ngOnInit(): void {
     this.tokenService.processOAuthCallback();
+    this.router.navigate(['dashboard']);
   }
 }

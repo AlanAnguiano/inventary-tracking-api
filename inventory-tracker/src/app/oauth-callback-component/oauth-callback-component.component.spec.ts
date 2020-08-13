@@ -1,10 +1,11 @@
+import { ActivatedRoute } from '@angular/router';
+import { ANGULAR_TOKEN_OPTIONS } from 'angular-token';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { of } from 'rxjs';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { OauthCallbackComponentComponent } from './oauth-callback-component.component';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ANGULAR_TOKEN_OPTIONS } from 'angular-token';
-import { ActivatedRoute } from '@angular/router';
-import { of } from 'rxjs';
 
 describe('OauthCallbackComponentComponent', () => {
   let component: OauthCallbackComponentComponent;
@@ -23,7 +24,8 @@ describe('OauthCallbackComponentComponent', () => {
 
     TestBed.configureTestingModule({
       imports: [
-        HttpClientTestingModule
+        HttpClientTestingModule,
+        RouterTestingModule
       ],
       declarations: [ OauthCallbackComponentComponent ],
       providers: [
